@@ -1,22 +1,21 @@
 $(function () {
 
-  // runs the function that sets the values of the textareas to the values saved in localStorage ////////////////////////////////////////////////////
+  // Runs the function that sets the values of the textareas to the values saved in localStorage ////////////////////////////////////////////////////
   renderLastRegistered();
-
 
   // Listener for click events //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $("button").click(function() {
 
-    //  these variables define the parent of the pressed button, the textarea of the pressed buttons parent, and the ID /////////////////////////////
+    //  These variables define the parent of the pressed button, the textarea of the pressed buttons parent, and the ID /////////////////////////////
     var buttonParent = $(this).parent();
     var parentTxt = buttonParent.children("textarea").val();
     var hourId = buttonParent.attr("id");
 
-    // stores the value of the text area under the correct id of the textareas parent ///////////////////////////////////////////////////////////////
+    // Stores the value of the text area under the correct id of the textareas parent ///////////////////////////////////////////////////////////////
     localStorage.setItem(hourId, parentTxt);
   })
 
-  // for loop for deterimining and applying past, present, and future based on the current hour ////////////////////////////////////////////////////
+  // For loop for deterimining and applying past, present, and future based on the current hour ////////////////////////////////////////////////////
   for (var i = 9; i < 18; i++) {
     var currentHour = dayjs().format('H');
     var currentId = $("#hour-" + i);
@@ -35,16 +34,16 @@ $(function () {
   function renderLastRegistered() {
     for (i = 0; i <= localStorage.length; i++) {
 
-      // gives the name of the key, which is originally the ID of the div it was saved from ////////////////////////////////////////////////////////
+      // Gives the name of the key, which is originally the ID of the div it was saved from ////////////////////////////////////////////////////////
       var keySort = localStorage.key(i);
 
-      // gives the item associated with the key ////////////////////////////////////////////////////////////////////////////////////////////////////
+      // Gives the item associated with the key ////////////////////////////////////////////////////////////////////////////////////////////////////
       var keyText = localStorage.getItem(localStorage.key(i));
 
-      // takes the name of the key and changes it to an ID /////////////////////////////////////////////////////////////////////////////////////////
+      // Takes the name of the key and changes it to an ID /////////////////////////////////////////////////////////////////////////////////////////
       var currentId = $("#" + keySort);
 
-      // uses the ID to apply the item to the textarea value it correctly corresponds with /////////////////////////////////////////////////////////
+      // Uses the ID to apply the item to the textarea value it correctly corresponds with /////////////////////////////////////////////////////////
       currentId.children("textarea").val(keyText);
     }
   }
