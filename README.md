@@ -11,4 +11,4 @@ This is a simple daily work schedule that allows the user to save events for eac
 
 ## Screenshots
 
-![Alt text](./assets/images/Screenshot.png)
+![Alt text](../assets/images/screenshot.png)
